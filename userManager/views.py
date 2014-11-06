@@ -57,4 +57,21 @@ def register(request):
             else:
                 return Response(userInfoSerializer.errors,status=status.HTTP_400_BAD_REQUEST)
             
+@api_view(['GET'])
+def logon(request):
+    sessionUserID = request.session['userID']
+    if sessionUserID!=None:
+        return HttpResponse(status=status.HTTP_403_FORBIDDEN)
+
+    phoneNum=request.POST['phoneNum']
+    tempUserInfo = queryUserByPhone(phoneNum=phoneNum)
+    
+    if tempUserInfo == None or tempUserInfo.count()==0:
+        return HttpResponse(status=status.HTTP_404_NOT_FOUND)
+    else:
+        if tempUserInfo.password == request.POST['password']:
+            request.session['user_id'] = tempUserInfo.id
+            userInfoSerializer = UserInfoSerializer(tempUserInfo)
+            return Response(userInfoSerializer.data,status=status.HTTP_202_ACCEPTED)
+    
     
