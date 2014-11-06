@@ -24,8 +24,13 @@ class UserInfo(models.Model):
         (USER_TYPE_ADMIN,'Admin')
     )
     
+    REG_TYPE_PHONE = 1
+    REG_TYPE_WEIBO = 2
+    REG_TYPE_WEIXIN = 3
+    
     
     phoneNum = models.CharField(max_length=20, null=True)
+    password = models.CharField(max_length=100, null=True)
     nickName = models.CharField(max_length=30, null=True)
     smallIconURL = models.URLField(max_length=100, null=True)
     largeIconURL = models.URLField(max_length=100, null=True)
@@ -41,6 +46,6 @@ class UserInfo(models.Model):
     createTime = models.DateTimeField(auto_now_add=True)
     updateTime = models.DateTimeField(auto_now=True)
   
-    
+#    
     
         
