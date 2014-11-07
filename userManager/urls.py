@@ -10,4 +10,6 @@ urlpatterns = patterns('',
 
     url(r'^register/$', views.register),
     url(r'^logon/$',views.logon),
+    url(r'^logout/$',views.logout),
+    url(r'^update_icon_image/$',views.update_icon_image)
 )

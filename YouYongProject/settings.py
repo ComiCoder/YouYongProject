@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+MEDIA_ROOT = 'G:/py_work_space/IMG_DATA/'
+MEDIA_URL = '/imgs/'
 
 
 # Quick-start development settings - unsuitable for production
@@ -66,6 +68,10 @@ DATABASES = {
         'PASSWORD': '111111',  
         'HOST': '127.0.0.1',  
         'PORT': '3306', 
+    },
+             
+    'mongo_db':{
+        
     }
 }
 
@@ -74,7 +80,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 

@@ -28,12 +28,14 @@ class UserInfo(models.Model):
     REG_TYPE_WEIBO = 2
     REG_TYPE_WEIXIN = 3
     
+    ICON_UPLOAD_PATH = "images/profile_icon/"
+    
     
     phoneNum = models.CharField(max_length=20, null=True)
     password = models.CharField(max_length=100, null=True)
     nickName = models.CharField(max_length=30, null=True)
-    smallIconURL = models.URLField(max_length=100, null=True)
-    largeIconURL = models.URLField(max_length=100, null=True)
+    smallIconURL = models.ImageField(upload_to=ICON_UPLOAD_PATH, null=True)
+    largeIconURL = models.ImageField(upload_to=ICON_UPLOAD_PATH, null=True)
     gender = models.SmallIntegerField(choices = GENDER_CHOICES, default=GENDER_NULL)
     selfDesc = models.CharField(max_length=300,null=True)
     address = models.CharField(max_length=100, null=True)
