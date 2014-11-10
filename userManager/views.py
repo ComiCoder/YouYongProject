@@ -118,4 +118,15 @@ def update_icon_image(request):
     userInfoSerializer = UserInfoSerializer(tempUserInfo)
     return Response(userInfoSerializer.data,status=status.HTTP_200_OK)
 
+@api_view(['POST'])
+def update_user(request):
+    return None
+
+def view_user(request):
+    return None
+
+def is_user_logon(request):
+    return False
+    
+
     

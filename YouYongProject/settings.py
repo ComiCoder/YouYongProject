@@ -40,6 +40,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rest_framework',
     'userManager',
+    'staffManager',
+    'ImageManager',
 )
 
 MIDDLEWARE_CLASSES = (
