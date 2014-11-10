@@ -1,5 +1,5 @@
 from django.db import models
-
+from YouYongProject import specSetting
 # Create your models here.
 class ImageInfo(models.Model):
     
@@ -23,19 +23,12 @@ class ImageInfo(models.Model):
     
 class AlbumInfo(models.Model):
     
-    ALBUM_STATUS_DELETE = 0
-    ALBUM_STATUS_DEFAULT = 1
     
-    
-    ALBUM_STATUS_CHOICES=(
-        (ALBUM_STATUS_DEFAULT,"default"),
-        (ALBUM_STATUS_DELETE,'delete'),
-    )
     
     
     title = models.CharField(max_length=100,default='')
     description = models.CharField(max_length=300,default='')
-    status=models.SmallIntegerField(choices=ALBUM_STATUS_CHOICES,default=ALBUM_STATUS_DEFAULT)
+    status=models.SmallIntegerField(choices = specSetting.INFO_STATUS_CHOICES, default=specSetting.INFO_STATUS_DEFAULT)
     
     images = models.ManyToManyField(ImageInfo, through='Album2Image')
     
@@ -44,19 +37,12 @@ class AlbumInfo(models.Model):
     
     
 class Album2Image(models.Model):
-    ALBUM2IMG_STATUS_DELETE = 0
-    ALBUM2IMG_STATUS_DEFAULT = 1
     
-    
-    ALBUM2IMG_STATUS_CHOICES=(
-        (ALBUM2IMG_STATUS_DEFAULT,"default"),
-        (ALBUM2IMG_STATUS_DELETE,'delete'),
-    )
     
     albumInfo = models.ForeignKey(AlbumInfo)
     ImageInfo = models.ForeignKey(ImageInfo)
     isPrimary = models.BooleanField(default="False")
-    status=models.SmallIntegerField(choices=ALBUM2IMG_STATUS_CHOICES,default=ALBUM2IMG_STATUS_DEFAULT)
+    status=models.SmallIntegerField(choices = specSetting.INFO_STATUS_CHOICES, default=specSetting.INFO_STATUS_DEFAULT)
     createTime = models.DateTimeField(auto_now_add=True)
     updateTime = models.DateTimeField(auto_now=True)
     

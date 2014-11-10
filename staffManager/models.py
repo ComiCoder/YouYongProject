@@ -1,6 +1,7 @@
 from django.db import models
 from ImageManager.models import AlbumInfo
 from userManager.models import UserInfo
+from YouYongProject import specSetting
 
 # Create your models here.
 class StaffInfo(models.Model):
@@ -17,15 +18,6 @@ class StaffInfo(models.Model):
                     )
     
     
-    #STAFF STATUS CONSTANTS
-    STAFF_STATUS_DELETE = 0
-    STAFF_STATUS_DEFAULT = 1
-    
-    STAFF_STATUS_CHOICES=(
-        (STAFF_STATUS_DEFAULT,"default"),
-        (STAFF_STATUS_DELETE,'delete'),
-    )
-    
      
     dealType = models.SmallIntegerField(choices=STAFF_DEAL_TYPE_CHOICES,default=STAFF_DEAL_TYPE_TRADE)
     albumInfo = models.ForeignKey(AlbumInfo)
@@ -35,7 +27,7 @@ class StaffInfo(models.Model):
     longitute = models.FloatField(default=0.0)
     lagituite = models.FloatField(default=0.0)
     publisher = models.ForeignKey(UserInfo)  #The Publisher Info
-    status = models.SmallIntegerField(choices = STAFF_STATUS_CHOICES, default=STAFF_STATUS_DEFAULT)
+    status = models.SmallIntegerField(choices = specSetting.INFO_STATUS_CHOICES, default=specSetting.INFO_STATUS_DEFAULT)
     createTime = models.DateTimeField(auto_now_add=True)
     updateTime = models.DateTimeField(auto_now=True)
     
