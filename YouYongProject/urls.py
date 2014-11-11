@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'YouYongProject.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
+    url(r'', include('social_auth.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^userInfo/',include('userManager.urls')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -10,6 +10,9 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
+
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 MEDIA_ROOT = 'G:/py_work_space/IMG_DATA/'
 MEDIA_URL = '/imgs/'
@@ -38,10 +41,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_auth',
     'rest_framework',
+    'yyAccountCenter',
     'userManager',
     'staffManager',
     'ImageManager',
+    
 )
 
 MIDDLEWARE_CLASSES = (
@@ -52,6 +58,12 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+  
+  "django.contrib.auth.context_processors.auth"
+  
 )
 
 ROOT_URLCONF = 'YouYongProject.urls'
@@ -96,3 +108,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+AUTH_USER_MODEL = 'yyAccountCenter.YYUser'

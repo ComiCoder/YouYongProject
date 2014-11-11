@@ -1,6 +1,5 @@
 from django.db import models
-
-# Create your models here.
+import hashlib
 
 #UserInfo 
 class UserInfo(models.Model):
@@ -47,6 +46,17 @@ class UserInfo(models.Model):
     authValue = models.SmallIntegerField(default=0)
     createTime = models.DateTimeField(auto_now_add=True)
     updateTime = models.DateTimeField(auto_now=True)
+    
+    def hashed_password(self, password=None):  
+        if not password:  
+            return self.business_password  
+        else:  
+            return hashlib.md5(password).hexdigest()  
+          
+    def check_password(self, password):  
+        if self.hashed_password(password) == self.business_password:  
+            return True  
+        return False  
   
 #    
     
